@@ -7,7 +7,13 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Catalog App'),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 80),
+          child: Text(
+            'Catalog App',
+            style: TextStyle(color: Colors.black, fontSize: 19),
+          ),
+        ),
       ),
       drawer: Mydrawer(),
     );
