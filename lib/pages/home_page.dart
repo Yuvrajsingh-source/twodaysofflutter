@@ -1,4 +1,6 @@
+import 'package:catalog/models/catalog.dart';
 import 'package:catalog/widget/drawer.dart';
+import 'package:catalog/widget/item_widget.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatelessWidget {
@@ -16,6 +18,12 @@ class Homepage extends StatelessWidget {
         ),
       ),
       drawer: Mydrawer(),
+      body: ListView.builder(
+        itemCount: catalogModels.items.length,
+        itemBuilder: (context, index) {
+          return ItemWidgets(item: catalogModels.items[index],);
+        },
+      ),
     );
   }
 }
