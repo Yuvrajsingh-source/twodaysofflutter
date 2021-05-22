@@ -22,6 +22,7 @@ class ItemWidgets extends StatelessWidget {
           leading: Image.network(
             item.image,
             height: 40,
+            width: 80,
           ),
           title: Text(item.name),
           subtitle: Text(item.desc),

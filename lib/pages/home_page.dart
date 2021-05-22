@@ -33,31 +33,6 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Padding(
-            padding: const EdgeInsets.only(left: 80),
-            child: Text(
-              'Catalog App',
-              style: TextStyle(color: Colors.black, fontSize: 19),
-            ),
-          ),
-        ),
-        drawer: Mydrawer(),
-        body: Padding(
-          padding: const EdgeInsets.all(0.0),
-          child: (catalogModels.items != null && catalogModels.items.isNotEmpty)
-              ? ListView.builder(
-                  itemCount: catalogModels.items.length,
-                  itemBuilder: (context, index) {
-                    return ItemWidgets(
-                      item: catalogModels.items[index],
-                    );
-                  },
-                )
-              : Center(
-                  child: CircularProgressIndicator(),
-                ),
-        ));
+    return Scaffold();
   }
 }
