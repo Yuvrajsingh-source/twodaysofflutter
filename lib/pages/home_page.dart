@@ -142,7 +142,7 @@ class Catalogitem extends StatelessWidget {
                           TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  ElevatedButton(onPressed: () {}, child: Text("Buy"))
+                  ElevatedButton(onPressed: () {}, child: Text("Buy"),)
                 ],
               )
             ],
