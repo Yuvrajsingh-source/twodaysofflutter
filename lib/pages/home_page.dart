@@ -1,5 +1,8 @@
 import 'package:catalog/models/catalog.dart';
+import 'package:catalog/pages/home_details_page.dart';
+import 'package:catalog/pages/login_page.dart';
 import 'package:catalog/widget/theme.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:velocity_x/velocity_x.dart';
 
@@ -46,9 +49,7 @@ class _HomepageState extends State<Homepage> {
             if (catalogModels.items != null && catalogModels.items.isNotEmpty)
               Cataloglist().expand()
             else
-              Center(
-                child: CircularProgressIndicator(),
-              )
+              Center(child: CircularProgressIndicator()).expand()
           ],
         ),
       )),
@@ -84,7 +85,16 @@ class Cataloglist extends StatelessWidget {
       itemCount: catalogModels.items.length,
       itemBuilder: (context, index) {
         final catalog = catalogModels.items[index];
-        return Catalogitem(catalog: catalog);
+        return InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Homedetail(
+                            catalog: catalog,
+                          )));
+            },
+            child: Catalogitem(catalog: catalog));
       },
     );
   }
@@ -101,14 +111,17 @@ class Catalogitem extends StatelessWidget {
     return VxBox(
       child: Row(
         children: [
-          Image.network(catalog.image)
-              .box
-              .p8
-              .rounded
-              .color(Mytheme.creamColor)
-              .make()
-              .pOnly(left: 10, top: 10, bottom: 10)
-              .w32(context),
+          Hero(
+            tag: Key(catalog.id.toString()),
+            child: Image.network(catalog.image)
+                .box
+                .p8
+                .rounded
+                .color(Mytheme.creamColor)
+                .make()
+                .pOnly(left: 10, top: 10, bottom: 10)
+                .w32(context),
+          ),
           Expanded(
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,7 +155,12 @@ class Catalogitem extends StatelessWidget {
                           TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  ElevatedButton(onPressed: () {}, child: Text("Buy"),)
+                  ElevatedButton(
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all(StadiumBorder())),
+                    onPressed: () {},
+                    child: Text("Buy"),
+                  )
                 ],
               )
             ],
