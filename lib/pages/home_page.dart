@@ -1,7 +1,9 @@
 import 'package:catalog/models/catalog.dart';
+import 'package:catalog/pages/cart_page.dart';
 import 'package:catalog/pages/home_details_page.dart';
 import 'package:catalog/pages/login_page.dart';
 import 'package:catalog/widget/theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 
 import 'package:velocity_x/velocity_x.dart';
@@ -39,20 +41,33 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Mytheme.creamColor,
-      body: SafeArea(
-          child: Container(
-        padding: Vx.m24,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Header(),
-            if (catalogModels.items != null && catalogModels.items.isNotEmpty)
-              Cataloglist().expand()
-            else
-              Center(child: CircularProgressIndicator()).expand()
-          ],
+      bottomNavigationBar: Container(
+        width: 50,
+        height: 50,
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Cartpage()));
+          },
+          child: Icon(CupertinoIcons.cart),
         ),
-      )),
+      ),
+      body: SafeArea(
+          bottom: false,
+          child: Container(
+            padding: Vx.m24,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Header(),
+                if (catalogModels.items != null &&
+                    catalogModels.items.isNotEmpty)
+                  Cataloglist().expand()
+                else
+                  Center(child: CircularProgressIndicator()).expand()
+              ],
+            ),
+          )),
     );
   }
 }
@@ -160,11 +175,11 @@ class Catalogitem extends StatelessWidget {
                         shape: MaterialStateProperty.all(StadiumBorder())),
                     onPressed: () {},
                     child: Text("Buy"),
-                  )
+                  ),
                 ],
               )
             ],
-          ))
+          )),
         ],
       ),
     ).white.rounded.square(130).make().py12();

@@ -8,6 +8,7 @@ class Item {
   final int id;
   final String name;
   final String desc;
+  final String longdesc;
   final num price;
   final String color;
   final String image;
@@ -16,6 +17,7 @@ class Item {
     this.id,
     this.name,
     this.desc,
+    this. longdesc,
     this.price,
     this.color,
     this.image,
@@ -25,6 +27,7 @@ class Item {
     int id,
     String name,
     String desc,
+    String longdesc,
     num price,
     String color,
     String image,
@@ -33,6 +36,7 @@ class Item {
       id: id ?? this.id,
       name: name ?? this.name,
       desc: desc ?? this.desc,
+      longdesc: longdesc ?? this.longdesc,
       price: price ?? this.price,
       color: color ?? this.color,
       image: image ?? this.image,
@@ -44,6 +48,7 @@ class Item {
       'id': id,
       'name': name,
       'desc': desc,
+      'longdesc': longdesc,
       'price': price,
       'color': color,
       'image': image,
@@ -55,6 +60,7 @@ class Item {
       id: map['id'],
       name: map['name'],
       desc: map['desc'],
+      longdesc:map['longdesc'],
       price: map['price'],
       color: map['color'],
       image: map['image'],
@@ -67,7 +73,7 @@ class Item {
 
   @override
   String toString() {
-    return 'Item(id: $id, name: $name, desc: $desc, price: $price, color: $color, image: $image)';
+    return 'Item(id: $id, name: $name, desc: $desc,longdesc: $longdesc, price: $price, color: $color, image: $image)';
   }
 
   @override
@@ -78,6 +84,7 @@ class Item {
         other.id == id &&
         other.name == name &&
         other.desc == desc &&
+        other.longdesc == longdesc &&
         other.price == price &&
         other.color == color &&
         other.image == image;
@@ -88,6 +95,7 @@ class Item {
     return id.hashCode ^
         name.hashCode ^
         desc.hashCode ^
+        longdesc.hashCode ^
         price.hashCode ^
         color.hashCode ^
         image.hashCode;
