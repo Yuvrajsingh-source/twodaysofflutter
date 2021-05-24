@@ -1,5 +1,5 @@
 import 'package:catalog/models/catalog.dart';
-import 'package:catalog/pages/cart_page.dart';
+
 import 'package:catalog/pages/home_details_page.dart';
 import 'package:catalog/pages/login_page.dart';
 import 'package:catalog/widget/theme.dart';
@@ -39,35 +39,34 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Mytheme.creamColor,
-      bottomNavigationBar: Container(
-        width: 50,
-        height: 50,
-        child: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Cartpage()));
-          },
-          child: Icon(CupertinoIcons.cart),
-        ),
-      ),
-      body: SafeArea(
-          bottom: false,
-          child: Container(
-            padding: Vx.m24,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Header(),
-                if (catalogModels.items != null &&
-                    catalogModels.items.isNotEmpty)
-                  Cataloglist().expand()
-                else
-                  Center(child: CircularProgressIndicator()).expand()
-              ],
+    return SafeArea(
+      child: Scaffold(
+        bottomNavigationBar: Container(
+          width: 50,
+          height: 50,
+          child: FittedBox(
+            child: FloatingActionButton(
+              onPressed: () {},
+              child: Icon(CupertinoIcons.cart),
             ),
-          )),
+          ),
+        ),
+        body: SafeArea(
+            child: Container(
+          padding: Vx.m20,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Header(),
+              Header2(),
+              if (catalogModels.items != null && catalogModels.items.isNotEmpty)
+                Cataloglist().expand()
+              else
+                Center(child: CircularProgressIndicator()).expand()
+            ],
+          ),
+        )),
+      ),
     );
   }
 }
@@ -75,17 +74,25 @@ class _HomepageState extends State<Homepage> {
 class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        "Anlitiqs App".text.xl4.bold.color(Colors.red).make(),
+        Container(),
+      ],
+    );
+  }
+}
+
+class Header2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        "Anlitiqs App".text.xl4.bold.color(Colors.black).make(),
         Padding(
-          padding: const EdgeInsets.only(bottom: 5),
-          child: "Digital Services"
-              .text
-              .size(18)
-              .color(Colors.deepPurpleAccent)
-              .make(),
+          padding: const EdgeInsets.only(bottom: 10),
+          child: "Digital Services".text.size(18).make(),
         ),
       ],
     );
@@ -126,16 +133,18 @@ class Catalogitem extends StatelessWidget {
     return VxBox(
       child: Row(
         children: [
-          Hero(
-            tag: Key(catalog.id.toString()),
-            child: Image.network(catalog.image)
-                .box
-                .p8
-                .rounded
-                .color(Mytheme.creamColor)
-                .make()
-                .pOnly(left: 10, top: 10, bottom: 10)
-                .w32(context),
+          Container(
+            child: Hero(
+              tag: Key(catalog.id.toString()),
+              child: Image.network(catalog.image)
+                  .box
+                  .p8
+                  .rounded
+                  .color(Colors.black12)
+                  .make()
+                  .pOnly(left: 10, top: 10, bottom: 10)
+                  .w32(context),
+            ),
           ),
           Expanded(
               child: Column(
@@ -148,15 +157,15 @@ class Catalogitem extends StatelessWidget {
                 ),
                 child: Text(catalog.name,
                     style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w800,
                         color: Colors.black)),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 15),
                 child: Text(
                   catalog.desc,
-                  style: TextStyle(color: Colors.black54),
+                  style: TextStyle(color: Colors.black54, fontSize: 15),
                 ),
               ),
               ButtonBar(
@@ -167,14 +176,14 @@ class Catalogitem extends StatelessWidget {
                     child: Text(
                       "\$${catalog.price}",
                       style:
-                          TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
                   ElevatedButton(
                     style: ButtonStyle(
                         shape: MaterialStateProperty.all(StadiumBorder())),
                     onPressed: () {},
-                    child: Text("Buy"),
+                    child: Text("Add to Cart"),
                   ),
                 ],
               )
@@ -182,6 +191,6 @@ class Catalogitem extends StatelessWidget {
           )),
         ],
       ),
-    ).white.rounded.square(130).make().py12();
+    ).white.rounded.square(145).make().py12();
   }
 }
