@@ -60,7 +60,6 @@ class _HomepageState extends State<Homepage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Header(),
-              Header2(),
               if (catalogModels.items != null && catalogModels.items.isNotEmpty)
                 Cataloglist().expand()
               else
@@ -85,20 +84,6 @@ class Header extends StatelessWidget {
         ),
       ],
     );
-  }
-}
-
-class Header2 extends StatefulWidget {
-  Header2({Key key}) : super(key: key);
-
-  @override
-  _Header2State createState() => _Header2State();
-}
-
-class _Header2State extends State<Header2> {
-  @override
-  Widget build(BuildContext context) {
-    return Material();
   }
 }
 
