@@ -41,18 +41,15 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: context.theme.scaffoldBackgroundColor,
         bottomNavigationBar: Container(
-          width: 50,
-          height: 50,
-          child: FittedBox(
-            child: FloatingActionButton(
-              backgroundColor: context.theme.buttonColor,
-              onPressed: () {},
-              child: Icon(CupertinoIcons.cart),
-            ),
+          child: FloatingActionButton(
+            backgroundColor:
+                context.theme.floatingActionButtonTheme.backgroundColor,
+            onPressed: () {},
+            child: Icon(CupertinoIcons.cart),
           ),
         ),
+        backgroundColor: context.theme.scaffoldBackgroundColor,
         body: SafeArea(
             child: Container(
           padding: Vx.m20,
@@ -63,11 +60,20 @@ class _HomepageState extends State<Homepage> {
               if (catalogModels.items != null && catalogModels.items.isNotEmpty)
                 Cataloglist().expand()
               else
-                Center(child: CircularProgressIndicator()).expand()
+                Center(child: CircularProgressIndicator()).expand(),
             ],
           ),
         )),
       ),
+    );
+  }
+}
+
+class drawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      drawer: Drawer(),
     );
   }
 }
