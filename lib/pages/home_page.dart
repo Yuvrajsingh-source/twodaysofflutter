@@ -79,7 +79,14 @@ class Header extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         "Anlitiqs App".text.xl4.bold.color(context.theme.accentColor).make(),
-        "Digital services".text.color(context.theme.accentColor).xl.make(),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 4),
+          child: "Digital services"
+              .text
+              .color(context.theme.accentColor)
+              .xl
+              .make(),
+        ),
       ],
     );
   }
@@ -145,14 +152,13 @@ class Catalogitem extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w800,
-                        color: context.theme.accentColor)),
+                        color: Colors.black)),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 15),
                 child: Text(
                   catalog.desc,
-                  style:
-                      TextStyle(color: context.theme.accentColor, fontSize: 15),
+                  style: TextStyle(color: Colors.black, fontSize: 15),
                 ),
               ),
               ButtonBar(
