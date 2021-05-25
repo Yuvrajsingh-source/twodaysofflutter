@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:catalog/models/catalog.dart';
 import 'package:catalog/widget/theme.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,7 +17,8 @@ class Homedetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: AppBar(),
+          appBar: AppBar(
+          ),
           bottomNavigationBar: Container(
             color: Colors.white,
             child: ButtonBar(

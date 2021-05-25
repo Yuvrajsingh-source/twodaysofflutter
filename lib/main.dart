@@ -12,6 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final darktheme = false;
   @override
   Widget build(BuildContext context) {
     //buildContext paramters

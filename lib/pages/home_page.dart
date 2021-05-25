@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:catalog/models/catalog.dart';
 
 import 'package:catalog/pages/home_details_page.dart';
@@ -43,11 +41,13 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: context.theme.scaffoldBackgroundColor,
         bottomNavigationBar: Container(
           width: 50,
           height: 50,
           child: FittedBox(
             child: FloatingActionButton(
+              backgroundColor: context.theme.buttonColor,
               onPressed: () {},
               child: Icon(CupertinoIcons.cart),
             ),
@@ -75,13 +75,11 @@ class _HomepageState extends State<Homepage> {
 class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        "Anlitiqs App".text.xl4.bold.color(Colors.red).make(),
-        Padding(
-          padding: const EdgeInsets.only(left: 30, top: 5),
-        ),
+        "Anlitiqs App".text.xl4.bold.color(context.theme.accentColor).make(),
+        "Digital services".text.color(context.theme.accentColor).xl.make(),
       ],
     );
   }
@@ -128,7 +126,7 @@ class Catalogitem extends StatelessWidget {
                   .box
                   .p8
                   .rounded
-                  .color(Colors.black12)
+                  .color(context.theme.canvasColor)
                   .make()
                   .pOnly(left: 10, top: 10, bottom: 10)
                   .w32(context),
@@ -147,13 +145,14 @@ class Catalogitem extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w800,
-                        color: Colors.black)),
+                        color: context.theme.accentColor)),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 15),
                 child: Text(
                   catalog.desc,
-                  style: TextStyle(color: Colors.black54, fontSize: 15),
+                  style:
+                      TextStyle(color: context.theme.accentColor, fontSize: 15),
                 ),
               ),
               ButtonBar(
@@ -179,6 +178,6 @@ class Catalogitem extends StatelessWidget {
           )),
         ],
       ),
-    ).white.rounded.square(145).make().py12();
+    ).color(context.theme.cardColor).rounded.square(145).make().py12();
   }
 }
