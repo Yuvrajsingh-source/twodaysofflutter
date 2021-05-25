@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:catalog/models/catalog.dart';
 
 import 'package:catalog/pages/home_details_page.dart';
@@ -78,24 +80,25 @@ class Header extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         "Anlitiqs App".text.xl4.bold.color(Colors.red).make(),
-        Container(),
+        Padding(
+          padding: const EdgeInsets.only(left: 30, top: 5),
+        ),
       ],
     );
   }
 }
 
-class Header2 extends StatelessWidget {
+class Header2 extends StatefulWidget {
+  Header2({Key key}) : super(key: key);
+
+  @override
+  _Header2State createState() => _Header2State();
+}
+
+class _Header2State extends State<Header2> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 10),
-          child: "Digital Services".text.size(18).make(),
-        ),
-      ],
-    );
+    return Material();
   }
 }
 

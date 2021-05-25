@@ -15,7 +15,7 @@ class Homedetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: AppBar(backgroundColor: Colors.transparent),
+          appBar: AppBar(),
           bottomNavigationBar: Container(
             color: Colors.white,
             child: ButtonBar(
