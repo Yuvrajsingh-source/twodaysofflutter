@@ -46,6 +46,6 @@ class Mytheme {
           iconTheme: IconThemeData(color: Colors.white),
           textTheme: Theme.of(context).textTheme.copyWith(
               headline6:
-                  context.textTheme.headline6.copyWith(color: Colors.red))),
+                  context.textTheme.headline6.copyWith(color: Colors.white))),
       fontFamily: GoogleFonts.poppins().fontFamily);
 }

@@ -40,35 +40,33 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        bottomNavigationBar: Container(
-          child: FloatingActionButton(
-            backgroundColor:
-                context.theme.floatingActionButtonTheme.backgroundColor,
-            onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Cartpage()));
-            },
-            child: Icon(CupertinoIcons.cart),
-          ),
+    return Scaffold(
+      bottomNavigationBar: Container(
+        child: FloatingActionButton(
+          backgroundColor:
+              context.theme.floatingActionButtonTheme.backgroundColor,
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Cartpage()));
+          },
+          child: Icon(CupertinoIcons.cart),
         ),
-        backgroundColor: context.theme.scaffoldBackgroundColor,
-        body: SafeArea(
-            child: Container(
-          padding: Vx.m20,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Header(),
-              if (catalogModels.items != null && catalogModels.items.isNotEmpty)
-                Cataloglist().expand()
-              else
-                Center(child: CircularProgressIndicator()).expand(),
-            ],
-          ),
-        )),
       ),
+      backgroundColor: context.theme.scaffoldBackgroundColor,
+      body: SafeArea(
+          child: Container(
+        padding: Vx.m20,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Header(),
+            if (catalogModels.items != null && catalogModels.items.isNotEmpty)
+              Cataloglist().expand()
+            else
+              Center(child: CircularProgressIndicator()).expand(),
+          ],
+        ),
+      )),
     );
   }
 }

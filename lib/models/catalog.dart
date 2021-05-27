@@ -1,7 +1,10 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
+
 class catalogModels {
   static List<Item> items;
+  Item getById(int id) => items.firstWhere((element) => element.id == id);
 }
 
 class Item {
@@ -17,7 +20,7 @@ class Item {
     this.id,
     this.name,
     this.desc,
-    this. longdesc,
+    this.longdesc,
     this.price,
     this.color,
     this.image,
@@ -60,7 +63,7 @@ class Item {
       id: map['id'],
       name: map['name'],
       desc: map['desc'],
-      longdesc:map['longdesc'],
+      longdesc: map['longdesc'],
       price: map['price'],
       color: map['color'],
       image: map['image'],

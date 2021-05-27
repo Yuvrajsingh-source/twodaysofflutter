@@ -13,78 +13,76 @@ class Homedetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          appBar: AppBar(),
-          bottomNavigationBar: Container(
-            color: context.theme.cardColor,
-            child: ButtonBar(
-              alignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: Text(
-                    "\$${catalog.price}",
-                    style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-                  ),
+    return Scaffold(
+        appBar: AppBar(),
+        bottomNavigationBar: Container(
+          color: context.theme.cardColor,
+          child: ButtonBar(
+            alignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 15),
+                child: Text(
+                  "\$${catalog.price}",
+                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
                 ),
-                ElevatedButton(
-                  style: ButtonStyle(
-                      shape: MaterialStateProperty.all(StadiumBorder())),
-                  onPressed: () {},
-                  child: Text("Buy", style: TextStyle(fontSize: 16)),
-                ).wh(80, 40)
-              ],
-            ),
+              ),
+              ElevatedButton(
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all(StadiumBorder())),
+                onPressed: () {},
+                child: Text("Buy", style: TextStyle(fontSize: 16)),
+              ).wh(80, 40)
+            ],
           ),
-          body: SafeArea(
-              bottom: false,
-              child: Column(
-                children: [
-                  Hero(
-                          tag: Key(catalog.id.toString()),
-                          child: Image.network(catalog.image))
-                      .h32(context),
-                  Expanded(
-                    child: VxArc(
-                        edge: VxEdge.TOP,
-                        height: 30,
-                        arcType: VxArcType.CONVEY,
-                        child: Container(
-                          width: context.screenWidth,
-                          color: Colors.white,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 60),
-                                child: Text(catalog.name,
-                                    style: TextStyle(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.w900,
-                                        color: Colors.black)),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Text(
-                                  catalog.desc,
+        ),
+        body: SafeArea(
+            bottom: false,
+            child: Column(
+              children: [
+                Hero(
+                        tag: Key(catalog.id.toString()),
+                        child: Image.network(catalog.image))
+                    .h32(context),
+                Expanded(
+                  child: VxArc(
+                      edge: VxEdge.TOP,
+                      height: 30,
+                      arcType: VxArcType.CONVEY,
+                      child: Container(
+                        width: context.screenWidth,
+                        color: Colors.white,
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 60),
+                              child: Text(catalog.name,
                                   style: TextStyle(
-                                      fontSize: 18, color: Colors.black87),
-                                ),
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.w900,
+                                      color: Colors.black)),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: Text(
+                                catalog.desc,
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.black87),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 25),
-                                child: Text(
-                                  catalog.longdesc,
-                                  style: TextStyle(
-                                      fontSize: 19, color: Colors.black87),
-                                ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 25),
+                              child: Text(
+                                catalog.longdesc,
+                                style: TextStyle(
+                                    fontSize: 19, color: Colors.black87),
                               ),
-                            ],
-                          ),
-                        )),
-                  )
-                ],
-              ))),
-    );
+                            ),
+                          ],
+                        ),
+                      )),
+                )
+              ],
+            )));
   }
 }
