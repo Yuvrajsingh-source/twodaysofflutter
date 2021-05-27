@@ -1,4 +1,5 @@
 import 'package:catalog/models/catalog.dart';
+import 'package:catalog/pages/cart_page.dart';
 
 import 'package:catalog/pages/home_details_page.dart';
 import 'package:catalog/pages/login_page.dart';
@@ -45,7 +46,10 @@ class _HomepageState extends State<Homepage> {
           child: FloatingActionButton(
             backgroundColor:
                 context.theme.floatingActionButtonTheme.backgroundColor,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Cartpage()));
+            },
             child: Icon(CupertinoIcons.cart),
           ),
         ),

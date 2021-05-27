@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Mytheme {
   static ThemeData LightTheme(BuildContext context) => ThemeData(
         scaffoldBackgroundColor: Color(0xfff5f5f5),
         appBarTheme: AppBarTheme(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          iconTheme: IconThemeData(color: Colors.black),
-        ),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            iconTheme: IconThemeData(color: Colors.black),
+            textTheme: Theme.of(context).textTheme.copyWith(
+                headline6:
+                    context.textTheme.headline6.copyWith(color: Colors.black))),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             onPrimary: Colors.white,
@@ -36,11 +39,13 @@ class Mytheme {
           primary: Colors.red,
         ),
       ),
-      canvasColor: Colors.black45,
+      canvasColor: Colors.black,
       appBarTheme: AppBarTheme(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        iconTheme: IconThemeData(color: Colors.white),
-      ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          iconTheme: IconThemeData(color: Colors.white),
+          textTheme: Theme.of(context).textTheme.copyWith(
+              headline6:
+                  context.textTheme.headline6.copyWith(color: Colors.red))),
       fontFamily: GoogleFonts.poppins().fontFamily);
 }

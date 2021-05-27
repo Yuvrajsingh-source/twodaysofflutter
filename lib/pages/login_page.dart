@@ -1,5 +1,6 @@
 import 'package:catalog/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class Loginpage extends StatefulWidget {
   Loginpage({Key key}) : super(key: key);
@@ -61,41 +62,41 @@ class _LoginpageState extends State<Loginpage> {
                   ),
                   Material(
                     borderRadius: BorderRadius.circular(changedButton ? 50 : 8),
-                    color: Colors.deepPurple,
+                    color:
+                        context.theme.floatingActionButtonTheme.backgroundColor,
                     child: InkWell(
-                      splashColor: Colors.amberAccent,
-                      onTap: () async {
-                        if (_formkey.currentState.validate()) {
-                          changedButton = true;
-                          setState(() {});
-                          await Future.delayed(Duration(seconds: 2));
-                          await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Homepage()));
-                          changedButton = false;
-                          setState(() {});
-                        }
-                      },
-                      child: AnimatedContainer(
-                        duration: Duration(seconds: 1),
-                        width: changedButton ? 50 : 150,
-                        height: 50,
-                        alignment: Alignment.center,
-                        child: changedButton
-                            ? Icon(
-                                Icons.done,
-                                color: Colors.white,
-                              )
-                            : Text(
-                                'Login',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18),
-                              ),
-                      ),
-                    ),
+                        splashColor: context
+                            .theme.floatingActionButtonTheme.backgroundColor,
+                        onTap: () async {
+                          if (_formkey.currentState.validate()) {
+                            changedButton = true;
+                            setState(() {});
+                            await Future.delayed(Duration(seconds: 1));
+                            await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Homepage()));
+                            changedButton = false;
+                            setState(() {});
+                          }
+                        },
+                        child: AnimatedContainer(
+                            duration: Duration(seconds: 1),
+                            width: changedButton ? 50 : 150,
+                            height: 50,
+                            alignment: Alignment.center,
+                            child: changedButton
+                                ? Icon(
+                                    Icons.done,
+                                    color: context.theme.cardColor,
+                                  )
+                                : Text(
+                                    'Login',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18),
+                                  ))),
                   )
                 ],
               ),
