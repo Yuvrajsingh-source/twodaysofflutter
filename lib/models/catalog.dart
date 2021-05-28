@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 
-class catalogModels {
-  static List<Item> items;
-  Item getById(int id) => items.firstWhere((element) => element.id == id);
+class CatalogModels {
+  static List<Item> jems;
+  Item getById(int id) => jems.firstWhere((element) => element.id == id);
 }
 
 class Item {

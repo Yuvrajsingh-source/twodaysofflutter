@@ -1,14 +1,8 @@
 import 'package:catalog/models/catalog.dart';
 import 'package:catalog/pages/cart_page.dart';
-
 import 'package:catalog/pages/home_details_page.dart';
-import 'package:catalog/pages/login_page.dart';
-import 'package:catalog/widget/theme.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/rendering.dart';
-
 import 'package:velocity_x/velocity_x.dart';
-
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
@@ -32,7 +26,7 @@ class _HomepageState extends State<Homepage> {
         await rootBundle.loadString("assets/files/catalog.json");
     final jsondecode = jsonDecode(catalogjson);
     var productsData = jsondecode["products"];
-    catalogModels.items = List.from(productsData)
+    CatalogModels.jems = List.from(productsData)
         .map<Item>((item) => Item.fromMap(item))
         .toList();
     setState(() {});
@@ -60,7 +54,7 @@ class _HomepageState extends State<Homepage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Header(),
-            if (catalogModels.items != null && catalogModels.items.isNotEmpty)
+            if (CatalogModels.jems != null && CatalogModels.jems.isNotEmpty)
               Cataloglist().expand()
             else
               Center(child: CircularProgressIndicator()).expand(),
@@ -105,9 +99,9 @@ class Cataloglist extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: catalogModels.items.length,
+      itemCount: CatalogModels.jems.length,
       itemBuilder: (context, index) {
-        final catalog = catalogModels.items[index];
+        final catalog = CatalogModels.jems[index];
         return InkWell(
             onTap: () {
               Navigator.push(
@@ -180,12 +174,7 @@ class Catalogitem extends StatelessWidget {
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                        shape: MaterialStateProperty.all(StadiumBorder())),
-                    onPressed: () {},
-                    child: Text("Add to Cart"),
-                  ),
+                  Addtocart(),
                 ],
               )
             ],
@@ -193,5 +182,24 @@ class Catalogitem extends StatelessWidget {
         ],
       ),
     ).color(context.theme.cardColor).rounded.square(145).make().py12();
+  }
+}
+
+class Addtocart extends StatefulWidget {
+  @override
+  _AddtocartState createState() => _AddtocartState();
+}
+
+class _AddtocartState extends State<Addtocart> {
+  bool isAddedbutton = false;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ButtonStyle(shape: MaterialStateProperty.all(StadiumBorder())),
+      onPressed: () {
+       
+      },
+      child: isAddedbutton ? Icon(Icons.done) : Text("Add to Cart"),
+    );
   }
 }

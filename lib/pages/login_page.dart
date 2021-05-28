@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Loginpage extends StatefulWidget {
-  Loginpage({Key key}) : super(key: key);
-
   @override
   _LoginpageState createState() => _LoginpageState();
 }
